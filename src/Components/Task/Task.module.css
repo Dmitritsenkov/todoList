@@ -1,0 +1,25 @@
+.task{
+	height: 25px;
+	border: 2px 0 2px 0 solid #EDEEF0;
+	background: #E5E6E7;
+	list-style-type: none;
+	margin-top: 3px;
+	width: 100%;
+	display: inline-block;
+}
+
+.crossed{
+	text-decoration: line-through;
+}
+
+.notCrossed{
+	text-decoration: none;
+}
+
+.trash{
+	width: 16px;
+	position: relative;
+	top: 5px;
+	float: right;
+	right: 35px;
+}
