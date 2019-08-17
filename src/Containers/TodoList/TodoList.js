@@ -79,7 +79,6 @@ class TodoList extends Component{
 				</ul>
 				<h3>Done:</h3>
 				<ul className={classes.list}>
-				
 				</ul>
 			</div>
 			)
@@ -87,3 +86,4 @@ class TodoList extends Component{
 }
 
 export default TodoList;
+dasdsadsa
