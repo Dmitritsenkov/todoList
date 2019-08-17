@@ -11,9 +11,12 @@ import classes from './Task.module.css';
 		return(
 				<li className={classes.task}>
 					<input 
+						className={classes.taskCheckBox}
 						type="checkbox" 
 						onChange={() => props.checkboxHandler(props.index)} 
+						checked = {props.checked}
 						/>
+
 					<span className={isDone}>{props.text}</span>
 					<img 
 						className={classes.trash} 

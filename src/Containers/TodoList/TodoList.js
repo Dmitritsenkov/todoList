@@ -58,27 +58,49 @@ class TodoList extends Component{
 
 	render(){
 
-		let tasks = this.state.tasks.map((el, index)=>(
-			<Task key={el.id} 
-				  id={el.id} 
-				  index={index}
-				  text={el.taskText} 
-				  checked={el.checked} 
-				  checkboxHandler={this.checkboxHandler}
-				  removeTask = {this.removeTask}/>
-		))
+		let doneTasks = [];
+		let notDoneTasks = [];
+
+
+		doneTasks = this.state.tasks.map((el, index) => {
+					if(el.checked){
+						return(
+						<Task key={el.id} 
+							  id={el.id} 
+							  index={index}
+							  text={el.taskText} 
+							  checked={el.checked} 
+							  checkboxHandler={this.checkboxHandler}
+							  removeTask = {this.removeTask}/>
+							  )
+					}
+
+					else{
+						notDoneTasks.push(<Task key={el.id} 
+							  id={el.id} 
+							  index={index}
+							  text={el.taskText} 
+							  checked={el.checked} 
+							  checkboxHandler={this.checkboxHandler}
+							  removeTask = {this.removeTask}/>)
+					}
+				}	  
+		)
+
+
 
 		return(
 			<div>
 				<h2>{this.state.listTitle}</h2>
 				<input type="text" onChange={(event)=>this.taskInputChangeHandler(event)} size="40" value={this.state.currentInputText} placeholder="Write your next task here..."/>
 				<button onClick={(event)=>this.addTask(event)}>Add</button>
-				<h3>Not Done:</h3>
+				<h3>Should be done:</h3>
 				<ul className={classes.list}>
-					{tasks}
+					{notDoneTasks}
 				</ul>
 				<h3>Done:</h3>
 				<ul className={classes.list}>
+					{doneTasks}
 				</ul>
 			</div>
 			)
@@ -86,4 +108,3 @@ class TodoList extends Component{
 }
 
 export default TodoList;
-dasdsadsa
