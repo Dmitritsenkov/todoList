@@ -31,7 +31,7 @@
 
 .taskCheckBox{
 	position: relative;
-	top: 4px;
+	top: 3px;
  	transform: scale(1.5);
  	margin-right: 25px;
  	margin-left: 20px;
@@ -39,6 +39,6 @@
 
  .taskText{
 	position: absolute;
-	transform: translateY(4px);
+	transform: translateY(2px);
  }
 

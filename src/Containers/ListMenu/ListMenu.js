@@ -6,27 +6,8 @@ import ListTab from '../../Components/ListTab/ListTab'
 
 class ListMenu extends Component {
 
-
 	state = {
 		todoLists: [
-        {
-          id: 123,
-          title: 'Grocery list',
-          path: '/grocery-list',
-          isShown: false
-        },
-       {
-       	  id: 543,
-          title: 'Project Tasks',
-          path: '/project-tasks',
-          isShown: true
-        },
-        {
-       	  id: 54523,
-          title: 'Bucket list',
-          path: '/project-tasks',
-          isShown: false
-        },
       ],
       currentListId: null,
       currentNewListInputText: ''
@@ -51,11 +32,12 @@ class ListMenu extends Component {
 		let addNewListWrapper = document.getElementById('addNewListWrapper');
 
 		if(addNewListWrapper.style.display == "inline-block")
-		addNewListWrapper.style.display="none";
+			addNewListWrapper.style.display="none";
+		
 
 		else{
 			addNewListWrapper.style.display="inline-block";
-			addNewListWrapper.childNodes[0].setAttribute("autofocus");
+			addNewListWrapper.childNodes[0].focus();
 		}
 	}
 
@@ -122,11 +104,6 @@ class ListMenu extends Component {
 		document.getElementById('todoListTitle').style.display="block";
 		document.getElementById('editTodoListTitleWraper').style.display="none";
 	}
-
-	
-
-	// _________
-
 
 	render(){
 
@@ -195,4 +172,10 @@ class ListMenu extends Component {
 					<div 
 					id="cover" 
 					className={classes.cover}
-					onClick={this.hideRe
+					onClick={this.hideRemovePopUp}></div>
+			</div>		
+		)
+	}
+}
+
+export default ListMenu;
