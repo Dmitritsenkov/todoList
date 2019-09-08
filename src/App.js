@@ -1,13 +1,12 @@
 import React from 'react';
-
-import Layout from './hoc/Layout/Layout';
-import TodoList from './Containers/TodoList/TodoList';
+import Layout from './Components/Layout/Layout';
+import ListMenu from './Containers/ListMenu/ListMenu';
 
 function App() {
   return (
-    <Layout>
-      <TodoList/>
-    </Layout>
+	  	<Layout>
+		    <ListMenu/> 
+	    </Layout>
   );
 }
 

@@ -1,11 +1,16 @@
 .task{
 	height: 26px;
 	border: 2px 0 2px 0 solid #EDEEF0;
-	background: #E5E6E7;
+	background: #E79B94;
 	list-style-type: none;
 	margin-top: 3px;
 	width: 100%;
 	display: inline-block;
+}
+
+.task_done{
+	background: #92CD92;
+	opacity: .9;
 }
 
 .crossed{
@@ -26,8 +31,14 @@
 
 .taskCheckBox{
 	position: relative;
-	top: 2px;
+	top: 4px;
  	transform: scale(1.5);
  	margin-right: 25px;
  	margin-left: 20px;
  }
+
+ .taskText{
+	position: absolute;
+	transform: translateY(4px);
+ }
+

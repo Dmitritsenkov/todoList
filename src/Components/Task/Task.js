@@ -4,12 +4,14 @@ import classes from './Task.module.css';
 
 	const Task = (props) => {
 
-		let isDone;
-		props.checked ? isDone = classes.crossed : isDone = classes.notCrossed;
+		let isCrossed;
+		props.checked ? isCrossed = classes.crossed : isCrossed = classes.notCrossed;
 
+		let isTaskDone;
+		props.checked ? isTaskDone = classes.task_done : isTaskDone = classes.task;
 
 		return(
-				<li className={classes.task}>
+				<li className={`${classes.task} ${isTaskDone}`}>
 					<input 
 						className={classes.taskCheckBox}
 						type="checkbox" 
@@ -17,7 +19,7 @@ import classes from './Task.module.css';
 						checked = {props.checked}
 						/>
 
-					<span className={isDone}>{props.text}</span>
+					<span className={`${isCrossed} ${classes.taskText}`}>{props.text}</span>
 					<img 
 						className={classes.trash} 
 						src={trash}

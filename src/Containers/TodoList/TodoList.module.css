@@ -1,3 +1,49 @@
 .list{
 	padding: 0;
 }
+.title{
+	margin-bottom: 0px;
+	text-align: center;
+}
+
+.editDeleteContainer{
+	text-align: center;
+}
+
+.editTitle, .removeTodoList{
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.editTitle{
+	color: blue;
+}
+.editTitle:hover{
+	color: #0055FF;
+}
+
+.removeTodoList{
+	color: red;
+}
+.removeTodoList:hover{
+	color: #FF4744;
+}
+
+.listContainer{
+	background: #F2DBA9;
+	padding: 25px;
+	padding-top: 0;
+}
+
+.listTitle{
+	padding-top: 10px;
+	text-align: center;
+}
+
+
+.editTodoListTitleWraper{
+	display: none;
+	text-align: center;
+	margin-top: 20px;
+	margin-left: 85px;
+}

@@ -6,19 +6,16 @@ import Task from '../../Components/Task/Task';
 class TodoList extends Component{
 
 	state = {
-		listTitle: "My List #1",
-		currentInputText: '',
-		tasks: [
-			// {id, taskText, checked},
-		]
+		currentInputTitle: this.props.title,
+		currentInputText: "",
+      	tasks: [
+            // {id, taskText, checked},
+          ],
 	}
 
 	taskInputChangeHandler = (event) => {
 		let text = event.target.value;
-		this.setState({
-			...this.state,
-			currentInputText: text
-		})
+		this.setState({currentInputText: text,})
 	}
 
 	addTask = (event) => {
@@ -29,11 +26,9 @@ class TodoList extends Component{
 		}
 		let tasks = [...this.state.tasks];
 		tasks.push(taskObj);
-		this.setState({
-			...this.state,
-			tasks: tasks,
-			currentInputText: ''
-		})
+
+		this.setState({tasks: tasks, currentInputText: ""});
+
 	}
 
 	removeTask = (id) => {
@@ -56,12 +51,31 @@ class TodoList extends Component{
 		})
 		}
 
-	render(){
+	// Edit title
 
+	showEditInputTitle = () =>{
+		document.getElementById('todoListTitle').style.display="none";
+		document.getElementById('editTodoListTitleWraper').style.display="block";
+	}	
+
+	closeEditInputTitle = () =>{
+		document.getElementById('todoListTitle').style.display="block";
+		document.getElementById('editTodoListTitleWraper').style.display="none";
+	}
+
+	changeEditTitleHandler = (event) => {
+		let currentText = this.state.currentInputTitle;
+		currentText = event.target.value;
+		console.log(currentText)
+		this.setState({currentInputTitle: currentText})
+	}
+
+
+
+	render(){
 		let doneTasks = [];
 		let notDoneTasks = [];
-
-
+	
 		doneTasks = this.state.tasks.map((el, index) => {
 					if(el.checked){
 						return(
@@ -87,21 +101,56 @@ class TodoList extends Component{
 				}	  
 		)
 
+		let todoList;
+			if(this.props.isShown){
+			todoList = 
+				<div>
+
+					<h2 id="todoListTitle" className={classes.title}>{this.props.title}</h2>
+
+					<div id="editTodoListTitleWraper" className={classes.editTodoListTitleWraper}>
+						<input 
+							onChange={(event)=>this.changeEditTitleHandler(event)}
+							value={this.state.currentInputTitle}
+							 />
+						<button 
+							onClick={()=>this.props.changeTitle(this.props.id, this.state.currentInputTitle)}>OK</button>	
+						<button onClick={this.closeEditInputTitle}>Cancel</button>
+					</div>
 
 
-		return(
+					<div className={classes.editDeleteContainer}>
+						<span onClick={this.showEditInputTitle} className={classes.editTitle}>Edit</span> 
+						<span> | </span> 
+	 					<span onClick={()=>this.props.showRemovePopUp(this.props.id)}
+							  className={classes.removeTodoList}>Delete</span><br/>
+					</div>
+						<h4 style={{marginBottom: '5px'}}>New Task...</h4>
+						<input 
+						type="text" 
+						onChange={(event)=>this.taskInputChangeHandler(event)} 
+						size="40" value={this.state.currentInputText} 
+						placeholder="Write your next task here..."
+						/>
+					<button onClick={(event)=>this.addTask(event)}>Add</button><br/>
+
+					<div className={classes.listContainer}>
+						<h3 className={classes.listTitle}>List</h3>
+						<h4>Should be done:</h4>
+						<ul className={classes.list}>
+							{notDoneTasks}
+						</ul>
+						<h4>Done:</h4>
+						<ul className={classes.list}>
+							{doneTasks}
+						</ul>
+					</div>
+				</div>
+		}
+
+		return (
 			<div>
-				<h2>{this.state.listTitle}</h2>
-				<input type="text" onChange={(event)=>this.taskInputChangeHandler(event)} size="40" value={this.state.currentInputText} placeholder="Write your next task here..."/>
-				<button onClick={(event)=>this.addTask(event)}>Add</button>
-				<h3>Should be done:</h3>
-				<ul className={classes.list}>
-					{notDoneTasks}
-				</ul>
-				<h3>Done:</h3>
-				<ul className={classes.list}>
-					{doneTasks}
-				</ul>
+			{todoList}
 			</div>
 			)
 	}
